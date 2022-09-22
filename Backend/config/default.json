@@ -1,0 +1,4 @@
+{
+    "mongoURI":"mongodb+srv://yashwanth6:yashwanth6@hpe.bqqo32w.mongodb.net/?retryWrites=true&w=majority",
+    "jwtSecret": "295Major"
+ }
