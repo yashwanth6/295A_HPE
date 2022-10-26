@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-import Navbar from './components/layout/Navbar'
-import { Fragment, useEffect } from 'react';
-import { Landing } from './components/layout/Landing';
-import {Provider} from 'react-redux';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './reducers/store';
+import Routes from './routes/routes';
+import Register from './components/auth/Register';
+import Landing from './components/layout/Landing';
+import Navbar from './components/layout/Navbar';
 
-const App = () => {
+
+function App() {
   return (
-  <Provider>
-  <Router>
-      <Fragment>
-        <Navbar />
-          <Route exact path='/' component={Landing}></Route>
-          <section className='container'>
+    <div>
+       
+       <Provider store={store}>
+            <div className="wrapper">
+            
+                <BrowserRouter>
+                <Navbar/>
+                    <Switch>
+                        <Routes/>
+                    </Switch>
+                </BrowserRouter>
+            </div>
+        </Provider>
         
-          </section>
-      </Fragment>
-  </Router>
-  </Provider>
+    
+    </div>
   );
 }
 
