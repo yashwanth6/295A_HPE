@@ -1,0 +1,57 @@
+
+/* body {
+    background: #a58e77;
+    
+    } */
+    .btn-login {
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+    padding: 0.75rem 1rem;
+    }
+    .btnlogin{
+    color: white !important;
+    background-color: #ea4335;
+    }
+    .d-grid{
+        margin-bottom: 10px;
+    }
+    .signincss {
+    font-family: Noto Sans,Helvetica Neue,Helvetica,Arial,Liberation Sans,Roboto,Noto,sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #000000;
+    height:20px
+    }
+    .mainbox{
+    width: 574px;
+    height: 775px;
+    }
+    .consent{
+    font-size: .875rem;
+    }
+    .cardbox{
+    width:500px;
+    height: 800px;
+    }
+
+    .btngoogle{
+        border-width: 1px;
+    color: #2d2d2d;
+    width: 100%;
+    border: 0.125rem solid #909090;
+    color: #000;
+    height: 44px;
+    margin-bottom: 1rem
+;
+font-family: Noto Sans,Helvetica Neue,Helvetica,Arial,Liberation Sans,Roboto,Noto,sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    box-sizing: border-box;
+    }
+
+    .typeform{
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+

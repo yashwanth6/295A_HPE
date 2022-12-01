@@ -3,13 +3,13 @@ const session = require('express-session');
 const app = express();
 
 var cors = require('cors');
-const connectDB = require('./config/db');
+const conn = require('./config/db');
 
 app.use(cors({origin:"http://localhost:3000", credentials:true}));
 
 app.get('/',(req,res) => res.send('API Running'));
 
-connectDB();
+conn.connectDB();
 
 // Init Middleware
 app.use(express.json());
@@ -33,10 +33,12 @@ app.get('/test_api',async function(req,res){
 
 
 //Defining Routes
-app.use('/user', require('./routes/UserRoute'));
-//app.use('/exercise', require('./routes/ExerciseRoute'));
+app.use('/api', require('./routes/UserRoute'));
+app.use('/exercise', require('./routes/ExerciseRoute'));
 
 
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+
+module.exports = app;

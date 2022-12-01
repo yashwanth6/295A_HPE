@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from './reducers/store';
+import store from './store';
 import Routes from './routes/routes';
 import Register from './components/auth/Register';
 import Landing from './components/layout/Landing';
@@ -12,16 +12,15 @@ function App() {
     <div>
        
        <Provider store={store}>
-            <div className="wrapper">
+      <>
+        <BrowserRouter>
+          <div>
             
-                <BrowserRouter>
-                <Navbar/>
-                    <Switch>
-                        <Routes/>
-                    </Switch>
-                </BrowserRouter>
-            </div>
-        </Provider>
+            <Routes />
+          </div>
+        </BrowserRouter>
+      </>
+    </Provider>
         
     
     </div>

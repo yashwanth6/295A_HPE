@@ -5,7 +5,8 @@ import {
     AUTH_ERROR,
     LOGIN_SUCCESS,
     //LOGIN_FAIL,
-    LOGOUT
+    LOGOUT,
+    ACCOUNT_DELETED
   } from '../actions/types';
   
   const initialState = {
@@ -27,7 +28,6 @@ import {
           user: payload
         };
       case REGISTER_SUCCESS:
-        return state;
       case LOGIN_SUCCESS:
         return {
           ...state,
@@ -35,6 +35,7 @@ import {
           isAuthenticated: true,
           loading: false
         };
+      case ACCOUNT_DELETED:
       case AUTH_ERROR:
       case LOGOUT:
         return {
