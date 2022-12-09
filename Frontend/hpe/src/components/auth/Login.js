@@ -65,7 +65,7 @@ export const Login = ({ login, isAuthenticated}) => {
                       <input
                         className="form-control"
                         type="password"
-                        placeholder="Enter Password"
+                        placeholder="Min8chars@123"
                         name="password"
                         value={password}
                         onChange={(e) => onChange(e)}
