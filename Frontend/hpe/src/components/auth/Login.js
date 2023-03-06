@@ -37,7 +37,7 @@ export const Login = ({ login, isAuthenticated}) => {
                   <b>Sign In</b>
                 </h5>
                 <p class="consent">
-                  By signing in to your account, you agree to Indeed's Terms of
+                  By signing in to your account, you agree to HPE's Terms of
                   Service and consent to our Cookie Policy and Privacy Policy.
                 </p>
                 <form onSubmit={(e) => onSubmit(e)}>
@@ -95,7 +95,7 @@ export const Login = ({ login, isAuthenticated}) => {
                     </button>
                   </div>
                  
-                  <Link to="/register">Reegister</Link>
+                  <Link to="/register">Register</Link>
                   
                 </form>
               </div>

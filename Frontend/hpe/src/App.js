@@ -5,6 +5,7 @@ import Routes from './routes/routes';
 import Register from './components/auth/Register';
 import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar';
+import "@mediapipe/drawing_utils";
 
 
 function App() {

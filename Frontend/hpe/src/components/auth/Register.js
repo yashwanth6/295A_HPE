@@ -8,6 +8,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Navbar from '../layout/Navbar';
+import {useGoogleLogin} from '@react-oauth/google';
 
 export const Register = ({setAlert , register,  isAuthenticated}) => {
     
@@ -79,7 +80,17 @@ export const Register = ({setAlert , register,  isAuthenticated}) => {
 
         return errors;
       };
+
+      function handleGoogleLoginSuccess(tokenResponse) {
+
+        const accessToken = tokenResponse.access_token;
+
+        console.log(accessToken);
+
+       // dispatch(signupGoogle(accessToken,nagivate))
+    }
       
+     // const login = useGoogleLogin({onSuccess: handleGoogleLoginSuccess});
 
     return (
          
@@ -93,7 +104,7 @@ export const Register = ({setAlert , register,  isAuthenticated}) => {
                         <div class="card border-0 shadow rounded-3 my-5 cardbox">
                             <div class="card-body p-4 p-sm-5">
                                 <h5 class="card-title text-left mb-5 fs-5 signincss"><b>Create an Account (it's free)</b></h5>
-                                <p class="consent">By signing in to your account, you agree to Indeed's Terms of Service and consent to our Cookie Policy and Privacy Policy.</p>
+                                <p class="consent">By signing in to your account, you agree to HPE's Terms of Service and consent to our Cookie Policy and Privacy Policy.</p>
                                 <form className="signup-form" onSubmit={e => onSubmit(e)}>
 
                                     <div class="form-floating mb-3">
@@ -167,11 +178,15 @@ export const Register = ({setAlert , register,  isAuthenticated}) => {
                                         </label>
                                     </div>
                                     <div class="d-grid">
-                                        <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign in</button>
+                                        <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Register</button>
                                     </div>
-                                    <Link to='/login'>Have an account? Sign in</Link>
-                                    
-                                    
+                                    <Link to='/login'>Have an account? Sign Up</Link>
+
+                                   
+                                    <span className="or">or</span>
+                 <button  onClick={() => login()}  className="googleBTN">
+                    <i class="fa-brands fa-google"></i>  Sign up with google</button>
+
                                 </form>
                                 
                             </div>

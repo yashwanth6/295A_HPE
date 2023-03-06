@@ -119,24 +119,27 @@ export const Landing = () => {
 
         <div class="row content">
           <div class="col-lg-6">
-            <h2>Eum ipsam laborum deleniti velitena</h2>
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assum perenda sruen jonee trave</h3>
+            <h2>HPE</h2>
+            <h3>Personolized fitness application for staying healthy</h3>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0">
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
+            Welcome to our gym application!
+
+Our mission is to help you reach your fitness goals and live a healthier life. With our app, you can track your workouts, monitor your progress, and connect with a community of like-minded individuals who are also on their fitness journey.
+
+Whether you're a beginner or a seasoned athlete, our app has something for everyone. We offer a variety of workout plans and exercises to choose from, as well as personalized coaching and nutrition advice to help you optimize your results.
             </p>
             <ul>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequa</li>
-              <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</li>
+              <li><i class="ri-check-double-line"></i> Customizable workout plans for all fitness levels</li>
+              <li><i class="ri-check-double-line"></i> Detailed exercise instructions and videos</li>
+              <li><i class="ri-check-double-line"></i> Progress tracking and analytics to monitor your results</li>
+              <li><i class="ri-check-double-line"></i> Personalized coaching and nutrition advice</li>
             </ul>
-            <p class="fst-italic">
+            {/* <p class="fst-italic">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
               magna aliqua.
-            </p>
+            </p> */}
           </div>
         </div>
 

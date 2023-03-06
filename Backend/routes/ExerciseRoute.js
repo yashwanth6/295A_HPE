@@ -20,7 +20,16 @@ const config = require('config');
 
 
 
-
+router.post("/getactivitybyid", async(req, res) => {
+     console.log(req.body.exid);
+     
+     try {
+          const room = await Exercise.findOne({'_id' : req.body.exid})
+          res.send(room)
+     } catch (error) {
+          return res.status(400).json({ message: error });
+     }
+});
 
 router.get("/getallactivities", async(req, res) => {
     console.log(req.body);
