@@ -184,7 +184,7 @@ export const Register = ({setAlert , register,  isAuthenticated}) => {
 
                                    
                                     <span className="or">or</span>
-                 <button  onClick={() => login()}  className="googleBTN">
+                 <button className="googleBTN">
                     <i class="fa-brands fa-google"></i>  Sign up with google</button>
 
                                 </form>
