@@ -1,0 +1,38 @@
+{
+    "poseDetectorConfig": {
+      "model": "MoveNet",
+      "detectorConfig": {},
+      "estimationConfig": {}
+    },
+    "classifierConfig": {
+      "path": "./tfjs-model/curls/model.json",
+      "label": ["Curls", "Other"]
+    },
+    "rulesCountConfig": {
+      "nameWorkout": "Jumping Jacks",
+      "nameStage": ["Up", "Down"],
+      "pathImageStage": ["./img/iconmonstr-caret-down-circle-filled-64.png", "./img/iconmonstr-caret-up-circle-filled-64.png"],
+      "pathAudioStage": ["./audio/go-down-from-google-translate.webm", "./audio/go-up-from-google-translate.webm"],
+      "anglePoint": {
+        
+        "5": {
+          "spouseIdx": [9, 11],
+          "rangeAngle": [
+            { "min": 30, "max": 60 },
+            { "min": 120, "max": 180 }
+          ]
+        },
+        "6": {
+          "spouseIdx": [10, 12],
+          "rangeAngle": [
+            { "min": 30, "max": 60 },
+            { "min": 120, "max": 180 }
+          ]
+        }
+      }
+      
+      
+      
+    }
+  }
+  

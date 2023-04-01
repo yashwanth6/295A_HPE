@@ -32,6 +32,26 @@ module.exports.createModel = createModel;
 
 const mongoose = require('mongoose');
 
+const workoutSchema = new mongoose.Schema({
+  nameWorkout: {
+    type: String,
+    required: true
+  },
+  duration: {
+    type: String,
+    required: true
+  },
+  repetition: {
+    type: Number,
+    required: true
+  },
+  date: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+
 const UserSchema = new mongoose.Schema({
   emailId: {
     type: String,
@@ -56,6 +76,7 @@ const UserSchema = new mongoose.Schema({
   nickname:{
     type: String
   },
+  workouts: [workoutSchema],
   date: {
     type: Date,
     default: Date.now

@@ -86,7 +86,9 @@ router.post(
   '/register',
   async (req, res) => {
     
-    const { firstName, emailId, password} = req.body;
+    const { username, email, password} = req.body;
+    console.log(username+" "+email+" "+password);
+    emailId=email;
     try {
       let user = await User.findOne({ emailId });
       if (user) {
@@ -96,8 +98,8 @@ router.post(
       }
       
       user = new User({
-        firstName,
-        emailId,
+        firstName:username,
+        emailId:email,
         password
       });
 
@@ -115,6 +117,7 @@ router.post(
         { expiresIn: '5 days' },
         (err, token) => {
           if (err) throw err;
+          res.status(200);
           res.json({ token });
         }
       );
@@ -130,10 +133,11 @@ router.post(
 
 
 router.post(
-  '/login',
+  '/login2',
   async (req, res) => {
     //auth();
-    const { emailId , password } = req.body;
+    const { username , password } = req.body;
+    emailId = username;
     try {
       let user = await User.findOne({ emailId });
       if (!user) {
@@ -158,6 +162,7 @@ router.post(
         { expiresIn: '5 days' },
         (err, token) => {
           if (err) throw err;
+          res.sendStatus(200);
           res.json({ token });
         }
       );
@@ -180,6 +185,21 @@ router.get("/getallusers", async(req, res) => {
 });
  
 
+router.post('/login', (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+   console.log(username+"    "+password);
+  // Check if the username and password are correct
+  if (username == "sai" && password == "sai") {
+    // Login successful, send a success response
+    res.sendStatus(200);
+  } else {
+    // Login failed, send an error response
+    res.sendStatus(401);
+  }
+
+  // res.redirect('http://localhost:8080/temp.html');
+});
 
 
 module.exports = router;
