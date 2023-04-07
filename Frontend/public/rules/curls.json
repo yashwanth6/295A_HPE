@@ -15,18 +15,32 @@
       "pathAudioStage": ["./audio/go-down-from-google-translate.webm", "./audio/go-up-from-google-translate.webm"],
       "anglePoint": {
         
-        "7": {
-          "spouseIdx": [5, 9],
-          "rangeAngle": [
-            { "min": 0, "max": 90 },
-            { "min": 130, "max": 180 }
-          ]
-        },
         "8": {
           "spouseIdx": [6, 10],
           "rangeAngle": [
-            { "min": 0, "max": 90 },
-            { "min": 130, "max": 180 }
+            { "min": 60 , "max": 90 },
+            { "min": 145, "max": 180 }
+          ]
+        },
+        "7": {
+          "spouseIdx": [5, 9],
+          "rangeAngle": [
+            { "min": 60, "max": 90 },
+            { "min": 145, "max": 180 }
+          ]
+        },
+        "12": {
+          "spouseIdx": [6, 14],
+          "rangeAngle": [
+            { "min": 160, "max": 180 },
+            { "min": 160, "max": 180 }
+          ]
+        },
+        "11": {
+          "spouseIdx": [5, 13],
+          "rangeAngle": [
+            { "min": 160, "max": 180 },
+            { "min": 160, "max": 180 }
           ]
         }
       }
