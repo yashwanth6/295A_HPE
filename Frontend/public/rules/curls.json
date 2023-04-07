@@ -5,7 +5,7 @@
       "estimationConfig": {}
     },
     "classifierConfig": {
-      "path": "./tfjs-model/curls/model.json",
+      "path": "./tfjs-model/dmbl_high_curls/model.json",
       "label": ["Curls", "Other"]
     },
     "rulesCountConfig": {
