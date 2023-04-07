@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Workouts</title>
+  <meta charset="UTF-8">
+  <!-- Bootstrap CDN link -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+  <h1>My Workouts</h1>
+
+  <div class="card-deck" id="workouts-card-deck">
+    <!-- This is where the workout data will be displayed -->
+  </div>
+
+  <script>
+    userId = localStorage.getItem("uid")
+    // Fetch workout data from the backend API
+    fetch('http://localhost:5000/exercise/getAllExercises', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ userId })
+})
+      .then(response => response.json())
+      .then(workouts => {
+        const workoutsCardDeck = document.getElementById('workouts-card-deck');
+
+        // Check if the workouts array is empty
+        if (workouts.length === 0) {
+          // Display a Bootstrap card with the "no data" message
+          const card = document.createElement('div');
+          card.classList.add('card');
+
+          const cardBody = document.createElement('div');
+          cardBody.classList.add('card-body');
+
+          const cardTitle = document.createElement('h5');
+          cardTitle.classList.add('card-title');
+          cardTitle.textContent = 'No data';
+          cardBody.appendChild(cardTitle);
+
+          card.appendChild(cardBody);
+          workoutsCardDeck.appendChild(card);
+        } else {
+          // Iterate through the workout data and create a Bootstrap card for each workout
+          workouts.forEach(workout => {
+            const card = document.createElement('div');
+            card.classList.add('card');
+
+            const cardBody = document.createElement('div');
+            cardBody.classList.add('card-body');
+
+            const cardTitle = document.createElement('h5');
+            cardTitle.classList.add('card-title');
+            cardTitle.textContent = workout.nameWorkout;
+            cardBody.appendChild(cardTitle);
+
+            const cardSubtitle = document.createElement('h6');
+            cardSubtitle.classList.add('card-subtitle');
+            cardSubtitle.classList.add('mb-2');
+            cardSubtitle.classList.add('text-muted');
+            cardSubtitle.textContent = `Duration: ${workout.duration}`;
+            cardBody.appendChild(cardSubtitle);
+
+            const cardText = document.createElement('p');
+            cardText.classList.add('card-text');
+            cardText.textContent = `Repetitions: ${workout.repetition}`;
+            cardBody.appendChild(cardText);
+
+            const cardFooter = document.createElement('div');
+            cardFooter.classList.add('card-footer');
+            const date = new Date(workout.date);
+            cardFooter.textContent = `Date: ${date.toDateString()}`;
+            card.appendChild(cardFooter);
+
+            card.appendChild(cardBody);
+            workoutsCardDeck.appendChild(card);
+          });
+        }
+      })
+      .catch(error => console.error(error));
+  </script>
+
+  <!-- Bootstrap JavaScript dependencies -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
