@@ -5,28 +5,42 @@
       "estimationConfig": {}
     },
     "classifierConfig": {
-      "path": "./tfjs-model/curls/model.json",
-      "label": ["Curls", "Other"]
+      "path": "./tfjs-model/JumpingJacks/model.json",
+      "label": ["Jumping Jacks", "Other"]
     },
     "rulesCountConfig": {
       "nameWorkout": "Jumping Jacks",
-      "nameStage": ["Up", "Down"],
+      "nameStage": ["Up","Down"],
       "pathImageStage": ["./img/iconmonstr-caret-down-circle-filled-64.png", "./img/iconmonstr-caret-up-circle-filled-64.png"],
       "pathAudioStage": ["./audio/go-down-from-google-translate.webm", "./audio/go-up-from-google-translate.webm"],
       "anglePoint": {
         
-        "5": {
-          "spouseIdx": [9, 11],
+        "6": {
+          "spouseIdx": [8, 12],
           "rangeAngle": [
-            { "min": 30, "max": 60 },
-            { "min": 120, "max": 180 }
+            { "min": 130, "max": 180 },
+            { "min": 0, "max": 60 }
           ]
         },
-        "6": {
-          "spouseIdx": [10, 12],
+        "12": {
+          "spouseIdx": [6, 14],
           "rangeAngle": [
-            { "min": 30, "max": 60 },
-            { "min": 120, "max": 180 }
+            { "min": 120, "max": 160 },
+            { "min": 160, "max": 180 }
+          ]
+        },
+        "5": {
+          "spouseIdx": [7, 11],
+          "rangeAngle": [
+            { "min": 130, "max": 180 },
+            { "min": 0, "max": 60 }
+          ]
+        },
+        "11": {
+          "spouseIdx": [5, 13],
+          "rangeAngle": [
+            { "min": 120, "max": 160 },
+            { "min": 160, "max": 180 }
           ]
         }
       }

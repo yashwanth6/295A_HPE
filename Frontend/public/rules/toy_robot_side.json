@@ -1,0 +1,96 @@
+{
+    "poseDetectorConfig": {
+      "model": "MoveNet",
+      "detectorConfig": {},
+      "estimationConfig": {}
+    },
+    "classifierConfig": {
+      "path": "./tfjs-model/toy_robot_side/model.json",
+      "label": ["TRS","Other"]
+    },
+    "rulesCountConfig": {
+      "nameStage": ["Left", "Right"],
+      "nameWorkout": "TRS",
+      "pathImageStage": ["./img/iconmonstr-caret-down-circle-filled-64.png", "./img/iconmonstr-caret-up-circle-filled-64.png"],
+      "pathAudioStage": ["./audio/go-down-from-google-translate.webm", "./audio/go-up-from-google-translate.webm"],
+      "anglePoint": {
+        
+        "8": {
+            "name": "Right_Hand",
+            "spouseIdx": [6, 10], 
+            "rangeAngle": [
+              { "min": 160, "max": 200 },
+              { "min": 160, "max": 200 }
+            ]
+          },
+
+        "6": {
+            "name": "Right_Shoulder",
+            "spouseIdx": [8, 12],
+            "rangeAngle": [
+                { "min": 0, "max": 120 },
+                { "min": 0, "max": 360 }
+            ]
+        },
+
+        "13": {
+            "name": "Left_Leg",
+            "spouseIdx": [11, 15],
+            "rangeAngle": [
+            { "min": 160, "max": 200 },
+            { "min": 160, "max": 200 }
+          ]
+        },
+
+        "11": {
+            "name": "Left_Hip",
+            "spouseIdx": [5, 13],
+            "rangeAngle": [
+              { "min": 0, "max": 120 },
+              { "min": 160, "max": 200 }
+            ]
+          },
+        
+        "14": {
+            "name": "Right_Leg",
+            "spouseIdx": [12, 16],
+            "rangeAngle": [
+                { "min": 160, "max": 200 },
+                { "min": 160, "max": 200 }
+            ]
+        },
+
+        "12": {
+            "name": "Right_Hip",
+            "spouseIdx": [6, 14],
+            "rangeAngle": [
+              { "min": 160, "max": 200 },
+              { "min": 0, "max": 120 }
+            ]
+          },
+
+        "7": {
+            "name": "Left_Hand",
+            "spouseIdx": [9, 5],
+            "rangeAngle": [
+              { "min": 160, "max": 200 },
+              { "min": 160, "max": 200 }
+            ]
+          },
+
+        "5": {
+            "name": "Left_Shoulder",
+            "spouseIdx": [7, 11],
+            "rangeAngle": [
+              { "min": 0, "max": 360 },
+              { "min": 0, "max": 120 }
+            ]
+          }
+        
+      }
+      
+      
+      
+    }
+  }
+  
