@@ -35,6 +35,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/user_activity_graph.html',
       filename: 'user_activity_graph.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/pri.html',
+      filename: 'pri.html'
     })
   ],
   devServer: {
