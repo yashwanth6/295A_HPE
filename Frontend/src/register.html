@@ -12,10 +12,24 @@
     font-family: 'Poppins', sans-serif
 }
 
+.errmsg{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.lblmsg{
+    font-size: 12 px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: grey;
+}
+
 body {
     height: 100vh;
     background: linear-gradient(to top, #c9c9ff 50%, #9090fa 90%) no-repeat
 }
+
+
+
 
 .container {
     margin: 50px auto
@@ -146,15 +160,25 @@ a[target='_blank'] {
 					<div class="panel-body p-3">
 						<form id="register-form">
 							<div class="form-group py-2">
-								<div class="input-field"> <span class="far fa-user p-2"></span> <input type="text" placeholder="Username" id="username" name="username"required> </div>
-                                <p id="username-error-message" style="display: none; color: red;">Invalid Username</p>
+								<div class="input-field"> <span class="far fa-user p-2"></span> <input type="text" placeholder="5-15 characters" id="username" name="username"required> </div>
+                                <p id="username-error-message" class="errmsg" style="display: none; color: red;">Invalid Username. Should contains minimum 5 letters</p>
+                                <p id ="username-label-message" class="lblmsg">Username should be between 5-15 characters</p>
 							</div>
                             <div class="form-group py-2">
 								<div class="input-field"> <span class="far fa-user p-2"></span> <input type="text" placeholder="Email" id="email" name="email"required> </div>
+                                <p id="email-error-message" class="errmsg" style="display: none; color: red;">Invalid Email</p>
 							</div>
 							<div class="form-group py-1 pb-2">
-								<div class="input-field"> <span class="fas fa-lock px-2"></span> <input type="password" placeholder="Enter your Password" id="password" name="password" required> <button class="btn bg-white text-muted"> <span class="far fa-eye-slash"></span> </button> </div>
-							</div>
+                                <div class="input-field"> 
+                                    <span class="fas fa-lock px-2"></span> 
+                                    <input type="password" placeholder="Enter your Password" id="password" name="password" required> 
+                                    <button class="btn bg-white text-muted" id="show-password"> 
+                                        <span class="far fa-eye-slash"></span> 
+                                    </button> 
+                                </div>
+                                <p id ="password-label-message" class="lblmsg">Password must be minimum 8 characters long and contains atleast one uppercase letter, one lowercase letter, one special character and a number</p>
+                                <p id="password-strength-message" class="errmsg"></p>
+                            </div>
 							<div class="form-inline"> <input type="checkbox" name="remember" id="remember"> <label for="remember" class="text-muted">Remember me</label> <a href="#" id="forgot" class="font-weight-bold">Forgot password?</a> </div>
 							<button type="submit"  value="Login" class="btn btn-primary btn-block mt-3">Login</button>
 							<div class="text-center pt-4 text-muted">Don't have an account? <a href="login.html">Sign In</a> </div>
@@ -162,9 +186,7 @@ a[target='_blank'] {
 						<p id="error-message" style="display: none; color: red;">Incorrect credentials</p>
                         <p id="error-message2" style="display: none; color: red;">User Already Exists</p>
 					</div>
-					<div class="mx-3 my-2 py-2 bordert">
-						<div class="text-center py-3"> <a href="https://wwww.facebook.com" target="_blank" class="px-2"> <img src="https://www.dpreview.com/files/p/articles/4698742202/facebook.jpeg" alt=""> </a> <a href="https://www.google.com" target="_blank" class="px-2"> <img src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png" alt=""> </a> <a href="https://www.github.com" target="_blank" class="px-2"> <img src="https://www.freepnglogos.com/uploads/512x512-logo-png/512x512-logo-github-icon-35.png" alt=""> </a> </div>
-					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -172,15 +194,7 @@ a[target='_blank'] {
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-	<!-- <form id="login-form">
-		<label for="username">Username:</label>
-		<input type="text" id="username" name="username"><br><br>
-		<label for="password">Password:</label>
-		<input type="password" id="password" name="password"><br><br>
-		<input type="submit" value="Login">
-	</form> -->
-
-	<!-- <p id="error-message" style="display: none; color: red;">Incorrect credentials</p> -->
+	
 
 
 	<script>
@@ -188,15 +202,60 @@ a[target='_blank'] {
 const errorMessage = document.getElementById('error-message');
 const errorMessage2 = document.getElementById('error-message2');
 const usernameErrorMessage = document.getElementById('username-error-message');
+const emailErrorMessage = document.getElementById('email-error-message');
+const passwordStrength = document.getElementById('password-strength-message');
 
 const usernameRegex = /^[a-zA-Z0-9_]{5,15}$/; // username should contain only letters, numbers and underscores and be 5-15 characters long
 const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/; // email should be a valid email address
 const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/; // password should be at least 8 characters long and contain at least one lowercase letter, one uppercase letter and one digit
 
+    var usernameInput = document.getElementById("username");
+    var userlabelMessage = document.getElementById("username-label-message");
+
+    usernameInput.addEventListener("focus", function() {
+        event.preventDefault();
+        userlabelMessage.style.display = "block";
+    });
+
+    usernameInput.addEventListener("click", function(event) {
+        event.preventDefault();
+        if (event.target != usernameInput) {
+            userlabelMessage.style.display = "none";
+        }
+    });
+
+
+const passwordInput = document.getElementById('password');
+const showPasswordButton = document.getElementById('show-password');
+
+showPasswordButton.addEventListener('click', () => {
+    event.preventDefault();
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        showPasswordButton.innerHTML = '<span class="far fa-eye"></span>';
+    } else {
+        passwordInput.type = 'password';
+        showPasswordButton.innerHTML = '<span class="far fa-eye-slash"></span>';
+    }
+});
+
+    var passwordlabelMessage = document.getElementById("password-label-message");
+
+    passwordInput.addEventListener("focus", function() {
+        event.preventDefault();
+        passwordlabelMessage.style.display = "block";
+    });
+
+    passwordInput.addEventListener("click", function(event) {
+        event.preventDefault();
+        if (event.target != passwordInput) {
+            passwordlabelMessage.style.display = "none";
+        }
+    });
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
-
+  let hasErrors = false;
   const username = form.elements.username.value;
   const email = form.elements.email.value;
   const password = form.elements.password.value;
@@ -204,21 +263,45 @@ form.addEventListener('submit', async (event) => {
 
   if (!usernameRegex.test(username)) {
     usernameErrorMessage.style.display = 'block';
-    usernameErrorMessage.textContent = 'Invalid username';
-    return;
+    usernameErrorMessage.textContent = 'Invalid username. should contain atleast 5 characters';
+    usernameErrorMessage.style.fontSize = '12px';
+    usernameErrorMessage.style.fontStyle = 'italic';
+    hasErrors = true;
+  }
+  else{
+    usernameErrorMessage.style.display = 'none';
+    usernameErrorMessage.textContent = '';
   }
 
   if (!emailRegex.test(email)) {
-    errorMessage.style.display = 'block';
-    errorMessage.textContent = 'Invalid email';
-    return;
+    emailErrorMessage.style.display = 'block';
+    emailErrorMessage.textContent = 'Invalid email';
+    emailErrorMessage.style.fontSize = '12px';
+    emailErrorMessage.style.fontStyle = 'italic';
+    hasErrors = true;
+  }
+  else{
+    emailErrorMessage.style.display = 'none';
+    emailErrorMessage.textContent = '';
   }
 
+  let passwordError = '';
   if (!passwordRegex.test(password)) {
-    errorMessage.style.display = 'block';
-    errorMessage.textContent = 'Invalid password';
-    return;
+    passwordError = 'Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, and one digit.';
+    passwordStrength.style.display = 'block';
+    passwordStrength.style.color = 'red';
+    passwordStrength.style.fontSize = '12px';
+    passwordStrength.style.fontStyle = 'italic';
+    passwordStrength.textContent = passwordError;
+    hasErrors = true;
+  }  else {
+    passwordError = 'Password is strong!';
+    passwordStrength.textContent = passwordError;
+    passwordStrength.style.display = 'none';
   }
+  
+  
+  if(!hasErrors){
 
   const response = await fetch('http://localhost:5000/api/register', {
     method: 'POST',
@@ -238,6 +321,7 @@ form.addEventListener('submit', async (event) => {
     console.log(response.status);
     errorMessage.style.display = 'block';
   }
+}
 });
 
 	</script>
