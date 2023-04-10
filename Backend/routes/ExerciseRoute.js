@@ -12,11 +12,11 @@ const User = require('../models/UserSchema');
 
 // Fetch all Exercises
 
-router.get("/getAllExercises", async(req, res) => {
-     console.log(req.body.exid);
+router.post("/getAllExercises", async(req, res) => {
+     console.log(req.body.userId);
      
      try {
-          const user = await User.findOne({ emailId: "abc123@gmail.com" });
+          const user = await User.findOne({ emailId: req.body.userId });
           if (!user) {
             return res.status(404).json({ message: 'User not found' });
           }
