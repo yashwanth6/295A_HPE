@@ -39,7 +39,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/pri.html',
       filename: 'pri.html'
-    })
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/yash.html',
+      filename: 'yash.html'
+    }),
   ],
   devServer: {
     watchFiles: ["./src/*.html"],
