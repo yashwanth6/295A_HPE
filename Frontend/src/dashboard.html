@@ -1272,7 +1272,7 @@
                     As you squat down, push your hips back and lower your body until your thighs are parallel to the ground or as low as you can comfortably go.
                     Keep your knees in line with your toes, avoid letting them collapse inward or outward. Push through your heels and engage your leg muscles to return to a standing position. Repeat for desired number of repetitions.
                   </p>
-                  <button class="btn btn-primary" onclick="location.href='http://localhost:8080/temp.html' ">Perform Squats</button>
+                  <button class="btn btn-primary" onclick="updateWorkout('squat')">Perform Squats</button>
                 </div>
               </div>
             </div>
@@ -1297,7 +1297,7 @@
                     the ground, then push up to the starting position. Keep your elbows close to your body as you lower and raise your body. 
                     Start with a few reps and gradually increase as you become stronger. Remember to engage your core and breathe deeply throughout the exercise.
                   </p>
-                  <button class="btn btn-primary"onclick="location.href='http://localhost:8080/temp.html' ">Perform Pushups</button>
+                  <button class="btn btn-primary" onclick="updateWorkout('push-up')">Perform Pushups</button>
                 </div>
               </div>
             </div>
@@ -1324,7 +1324,7 @@
                     Remember to land softly on the balls of your feet and keep your core engaged throughout the exercise. 
                
                   </p>
-                  <button class="btn btn-primary"onclick="location.href='http://localhost:8080/temp.html' ">Perform Jumping-Jacks</button>
+                  <button class="btn btn-primary" onclick="updateWorkout('jumping-jacks')">Perform Jumping-Jacks</button>
                 </div>
               </div>
             </div>
@@ -1352,7 +1352,7 @@
                     the exercise. 
                
                   </p>
-                  <button class="btn btn-primary"onclick="location.href='http://localhost:8080/temp.html' ">Perform Dumbbell High Curl</button>
+                  <button class="btn btn-primary" onclick="updateWorkout('curls')">Perform Dumbbell High Curl</button>
                 </div>
               </div>
             </div>
@@ -1378,7 +1378,7 @@
                   starting position, then repeat on the other leg. Keep your core engaged and your back straight throughout the 
                   exercise. Start with a few reps and gradually increase as you become stronger. 
                   </p>
-                  <button class="btn btn-primary"onclick="location.href='http://localhost:8080/temp.html' ">Perform Lunges</button>
+                  <button class="btn btn-primary" onclick="updateWorkout('lunges')">Perform Lunges</button>
                 </div>
               </div>
             </div>
@@ -1388,7 +1388,16 @@
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-	
+	<script>
+    function updateWorkout(exercise) {
+      localStorage.setItem('DBWOSettings', JSON.stringify({
+        ...JSON.parse(localStorage.getItem('DBWOSettings')),
+        currWorkout: exercise
+      }));
+      location.href = 'http://localhost:8080/temp.html';
+    }
+  </script>
+ 
 
 
 
