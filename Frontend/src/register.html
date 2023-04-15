@@ -303,7 +303,7 @@ form.addEventListener('submit', async (event) => {
   
   if(!hasErrors){
 
-  const response = await fetch('http://localhost:5000/api/register', {
+  const response = await fetch('http://3.141.195.114:5000/api/register', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -312,7 +312,7 @@ form.addEventListener('submit', async (event) => {
   });
 
   if (response.status === 200) {
-    window.location.href = 'http://localhost:8080/login.html';
+    window.location.href = 'http://3.141.195.114:8080/login.html';
   } 
   else if(response.status === 400){
     errorMessage2.style.display = 'block';
