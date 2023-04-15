@@ -28,6 +28,10 @@ module.exports = {
       template: './src/register.html',
       filename: 'register.html'
     }),
+    new HtmlWebpackPlugin({
+      template: './src/calorie.html',
+      filename: 'calorie.html'
+    }),
   ],
   devServer: {
     watchFiles: ["./src/*.html"],
