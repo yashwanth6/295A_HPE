@@ -16,7 +16,7 @@
   <script>
     userId = localStorage.getItem("uid")
     // Fetch workout data from the backend API
-    fetch('http://3.141.195.114:5000/exercise/getAllExercises', {
+    fetch('http://localhost:5000/exercise/getAllExercises', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
