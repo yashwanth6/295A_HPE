@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Table with Popup</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style>
+
+.navbar {
+        padding: 0;
+      }
+      
+      .navbar ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        list-style: none;
+        align-items: center;
+      }
+      
+      .navbar li {
+        position: relative;
+      }
+      
+      .navbar a,
+      .navbar a:focus {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 0 10px 30px;
+        font-family: "Poppins", sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        color: #556270;
+        white-space: nowrap;
+        transition: 0.3s;
+      }
+      
+      .navbar a i,
+      .navbar a:focus i {
+        font-size: 12px;
+        line-height: 0;
+        margin-left: 5px;
+      }
+      
+      .navbar a:hover,
+      .navbar .active,
+      .navbar .active:focus,
+      .navbar li:hover>a {
+        color: #d9232d;
+      }
+      
+      .navbar .getstarted,
+      .navbar .getstarted:focus {
+        background: #d9232d;
+        padding: 8px 25px;
+        margin-left: 30px;
+        border-radius: 4px;
+        font-weight: 400;
+        color: #fff;
+      }
+      
+      .navbar .getstarted:hover,
+      .navbar .getstarted:focus:hover {
+        color: #fff;
+        background: #e1444d;
+      }
+      
+      .navbar .dropdown ul {
+        display: block;
+        position: absolute;
+        left: 14px;
+        top: calc(100% + 30px);
+        margin: 0;
+        padding: 10px 0;
+        z-index: 99;
+        opacity: 0;
+        visibility: hidden;
+        background: #fff;
+        box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+        transition: 0.3s;
+      }
+      
+      .navbar .dropdown ul li {
+        min-width: 200px;
+      }
+      
+      .navbar .dropdown ul a {
+        padding: 10px 20px;
+        font-size: 15px;
+        text-transform: none;
+        font-weight: 400;
+      }
+      
+      .navbar .dropdown ul a i {
+        font-size: 12px;
+      }
+      
+      .navbar .dropdown ul a:hover,
+      .navbar .dropdown ul .active:hover,
+      .navbar .dropdown ul li:hover>a {
+        color: #d9232d;
+      }
+      
+      .navbar .dropdown:hover>ul {
+        opacity: 1;
+        top: 100%;
+        visibility: visible;
+      }
+      
+      .navbar .dropdown .dropdown ul {
+        top: 0;
+        left: calc(100% - 30px);
+        visibility: hidden;
+      }
+      
+      .navbar .dropdown .dropdown:hover>ul {
+        opacity: 1;
+        top: 0;
+        left: 100%;
+        visibility: visible;
+      }
+      
+      @media (max-width: 1366px) {
+        .navbar .dropdown .dropdown ul {
+          left: -90%;
+        }
+      
+        .navbar .dropdown .dropdown:hover>ul {
+          left: -100%;
+        }
+      }
+
+		.popup {
+			display: none;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 1;
+			background-color: white;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 5px gray;
+		}
+
+		.popup-overlay {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+			z-index: 1;
+		}
+	</style>
+</head>
+<body>
+
+    <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+
+          <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="about.html">About</a></li>
+              <li><a href="team.html">Team</a></li>
+              <li><a href="testimonials.html">Testimonials</a></li>
+
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          
+          <li><a href="blog.html">Blog</a></li>
+
+          <li><a href="contact.html">Contact</a></li>
+          <!-- <li><a href="login.html" class="getstarted">Login</a></li> -->
+          <li><a href="user_activity.html"> Activities</a></li>
+          <li><a href="user_activity_graph.html"> Activity Graphs</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+
+<div class="container mt-5">
+	<h2>Activities Performed</h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Exercise Name</th>
+				<th>Date</th>
+				<th>Duration (mins)</th>
+				<th>Details</th>
+			</tr>
+		</thead>
+		<tbody id="exercise-table">
+			<!-- Table rows will be added dynamically with JavaScript -->
+		</tbody>
+	</table>
+</div>
+
+<div class="popup-overlay"></div>
+<div class="popup">
+	<h4 id="popup-title"></h4>
+	<p id="popup-description"></p>
+	<button class="btn btn-secondary" onclick="closePopup()">Close</button>
+</div>
+
+<script>
+	// Get the user ID from local storage
+	let userId = localStorage.getItem("uid");
+
+	// Fetch workout data from the backend API
+	fetch('http://3.141.195.114:5000/exercise/getAllExercises', {
+	  method: 'POST',
+	  headers: {
+	    'Content-Type': 'application/json'
+	  },
+	  body: JSON.stringify({ userId })
+	})
+	.then(response => response.json())
+	.then(data => {
+		// Add the workout data to the table
+		let tableBody = document.getElementById("exercise-table");
+
+		data.forEach(rowData => {
+			let row = document.createElement("tr");
+
+			let exerciseNameCell = document.createElement("td");
+			exerciseNameCell.innerText = rowData.nameWorkout;
+			row.appendChild(exerciseNameCell);
+
+			let dateCell = document.createElement("td");
+
+
+            
+            const dateObj = new Date(rowData.date);
+
+            // Get the date and time components from the date object
+            const year = dateObj.getFullYear();
+            const month = dateObj.getMonth() + 1; // Month is zero-indexed, so we add 1
+            const day = dateObj.getDate();
+            const hours = dateObj.getHours();
+            const minutes = dateObj.getMinutes();
+            const seconds = dateObj.getSeconds();
+
+            // Format the date and time components as a string
+            const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+            const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+            // Combine the date and time components into a final string
+            const formattedDateTime = `${formattedDate} ${formattedTime}`;
+
+            //console.log(formattedDateTime); // Output: "2023-03-27 05:19:46"
+
+
+			dateCell.innerText = formattedDateTime;
+			row.appendChild(dateCell);
+
+			let durationCell = document.createElement("td");
+			durationCell.innerText = rowData.duration;
+			row.appendChild(durationCell);
+
+			let detailsCell = document.createElement("td");
+			let detailsButton = document.createElement("button");
+			detailsButton.innerText = "Details";
+			detailsButton.classList.add("btn", "btn-primary");
+			detailsButton.onclick = function() {
+				openPopup(rowData.nameWorkout, formattedDateTime, rowData.duration, rowData.repetition);
+			};
+			detailsCell.appendChild(detailsButton);
+			row.appendChild(detailsCell);
+
+			tableBody.appendChild(row);
+		});
+	})
+	.catch(error => console.error(error));
+
+	function openPopup(exerciseName, date, duration, description) {
+		// Set the title and description in the popup
+		document.getElementById("popup-title").innerText = exerciseName;
+	document.getElementById("popup-description").innerText = `Date: ${date}\nDuration: ${duration} \nRepitetions: ${description}`;
+
+	// Show the popup and overlay
+	document.getElementsByClassName("popup-overlay")[0].style.display = "block";
+	document.getElementsByClassName("popup")[0].style.display = "block";
+}
+
+function closePopup() {
+	// Hide the popup and overlay
+	document.getElementsByClassName("popup-overlay")[0].style.display = "none";
+	document.getElementsByClassName("popup")[0].style.display = "none";
+}
+
+</script>
+
+</body>
+</html>

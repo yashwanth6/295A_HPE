@@ -29,6 +29,22 @@ module.exports = {
       filename: 'register.html'
     }),
     new HtmlWebpackPlugin({
+      template: './src/user_activity.html',
+      filename: 'user_activity.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/user_activity_graph.html',
+      filename: 'user_activity_graph.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/pri.html',
+      filename: 'pri.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/yash.html',
+      filename: 'yash.html'
+    }),
+    new HtmlWebpackPlugin({
       template: './src/calorie.html',
       filename: 'calorie.html'
     }),

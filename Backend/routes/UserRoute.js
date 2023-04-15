@@ -198,7 +198,7 @@ router.post('/login', (req, res) => {
     res.sendStatus(401);
   }
 
-  // res.redirect('http://localhost:8080/temp.html');
+  // res.redirect('http://3.141.195.114:8080/temp.html');
 });
 
 

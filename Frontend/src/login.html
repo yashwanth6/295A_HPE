@@ -14,7 +14,7 @@
 
 body {
     height: 100vh;
-    background: linear-gradient(to top, #c9c9ff 50%, #9090fa 90%) no-repeat
+    background: linear-gradient(to top, #954a5e 50%, #9c3f3f 90%) no-repeat
 }
 
 .container {
@@ -134,7 +134,7 @@ a[target='_blank'] {
 </head>
 <body>
 
-	
+
 
     <div class="container">
 		<div class="row">
@@ -157,9 +157,9 @@ a[target='_blank'] {
 						</form>
 						<p id="error-message" style="display: none; color: red;">Incorrect credentials</p>
 					</div>
-					<div class="mx-3 my-2 py-2 bordert">
+					<!-- <div class="mx-3 my-2 py-2 bordert">
 						<div class="text-center py-3"> <a href="https://wwww.facebook.com" target="_blank" class="px-2"> <img src="https://www.dpreview.com/files/p/articles/4698742202/facebook.jpeg" alt=""> </a> <a href="https://www.google.com" target="_blank" class="px-2"> <img src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png" alt=""> </a> <a href="https://www.github.com" target="_blank" class="px-2"> <img src="https://www.freepnglogos.com/uploads/512x512-logo-png/512x512-logo-github-icon-35.png" alt=""> </a> </div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
@@ -189,7 +189,7 @@ a[target='_blank'] {
             
             localStorage.setItem("uid", username);
 
-			const response = await fetch('http://localhost:5000/api/login2', {
+			const response = await fetch('http://3.141.195.114:5000/api/login2', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -198,7 +198,7 @@ a[target='_blank'] {
 			});
 
 			if (response.status === 200) {
-				window.location.href = 'http://localhost:8080/dashboard.html';
+				window.location.href = 'http://3.141.195.114:8080/dashboard.html';
 			} else {
 				errorMessage.style.display = 'block';
 			}
