@@ -1,37 +1,152 @@
-<form id="personal-info-form">
-    <label for="age">Age:</label>
-    <input type="number" id="age" name="age" required><br>
-  
-    <label for="weight">Weight (kg):</label>
-    <input type="number" id="weight" name="weight" step="0.01" required><br>
-  
-    <label for="height">Height (m):</label>
-    <input type="number" id="height" name="height" step="0.01" required><br>
-  
-    <label for="gender">Gender:</label>
-    <select id="gender" name="gender" required>
-      <option value="male">Male</option>
-      <option value="female">Female</option>
-      <option value="female">Other</option>
+<title>Exercise Application</title>
+<style>
+  body {
+    background-color: #f8f8f8;
+    font-family: Arial, sans-serif;
+  }
+  .form-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #ff8c00;
+      }
 
-    </select><br>
-  
-    <label for="activity-level">Activity Level:</label>
-    <select id="activity-level" name="activity-level" required>
-      <option value="sedentary">Sedentary</option>
-      <option value="moderately active">Moderately Active</option>
-      <option value="very active">Very Active</option>
-    </select><br>
-  
-    <button type="submit">Submit</button>
-  </form>
-  
-  <div id="personal-info-results">
-   </div>
+  #personal-info-form {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    max-width: 500px;
+    padding: 20px;
+    float: left;
+    width: 50%;
+
+  }
+
+  #personal-info-form label {
+    display: block;
+    margin-bottom: 7px;
+    margin-top: 10px;
+  }
+
+  #personal-info-form input[type="number"],
+  #personal-info-form select {
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    padding: 8px;
+    width: 100%;
+  }
+
+  #personal-info-form button[type="submit"] {
+    background-color: orange;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+  }
+
+  #personal-info-results {
+    background-color: orange;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    color: white;
+    margin: auto;
+    max-width: 500px;
+    padding: 20px;
+    text-align: center;
+    float: right;
+    width: 50%;
+  }
+
+  #personal-info-results p {
+    font-size: 18px;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+
+  #personal-info-results h2 {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+ #plan-my-diet {
+    text-align: center;
+    float: right;
+    width: 50%;
+    display: block;
+}
+
+#plan-my-diet-button {
+  background-color: #4CAF50;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 10px;
+    width: 25%;
+}
+
+#plan-my-diet-button:hover {
+  background-color: #3e8e41;
+}
+
+#diet-results {
+  margin-top: 20px;
+  text-align: center;
+}
+
+</style>
+<h1 class="form-title">Enter Personal Information</h1>
+<form id="personal-info-form">
+  <label for="age">Age:</label>
+  <input type="number" id="age" name="age" required>
+
+  <label for="weight">Weight (kg):</label>
+  <input type="number" id="weight" name="weight" step="0.01" required>
+
+  <label for="height">Height (m):</label>
+  <input type="number" id="height" name="height" step="0.01" required>
+
+  <label for="gender">Gender:</label>
+  <select id="gender" name="gender" required>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+    <option value="other">Other</option>
+  </select>
+
+  <label for="activity-level">Activity Level: (On a scale of 10, rate yourself)</label>
+  <select id="activity-level" name="activity-level" required>
+    <option value="sedentary">0-2</option>
+    <option value="lightly Active">2-4</option>
+    <option value="moderately active">4-6</option>
+    <option value="very active">6-8</option>
+    <option value="extra active">8-10</option>
+  </select>
+
+  <button type="submit">Submit</button>
+</form>
+
+<div id="personal-info-results" style="display:none;"></div>
+
+
+<div id="plan-my-diet" style="display:none;">
+  <button id="plan-my-diet-button">Plan My Diet!</button>
+  <div id="diet-results"></div>
+</div>
   <script>
     // Front end code
 const personalInfoForm = document.querySelector('#personal-info-form');
 const personalInfoResults = document.querySelector('#personal-info-results');
+const planMyDietDiv = document.querySelector('#plan-my-diet');
 
 personalInfoForm.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -41,6 +156,18 @@ personalInfoForm.addEventListener('submit', (event) => {
   const height = parseFloat(personalInfoForm.elements['height'].value);
   const gender = personalInfoForm.elements['gender'].value;
   const activityLevel = personalInfoForm.elements['activity-level'].value;
+  //const activityLevelInt = parseInt(activityLevel);
+
+
+  const activityLevels = {
+    "sedentary": 1,
+    "lightly active": 2,
+    "moderately active": 3,
+    "very active": 4,
+    "extra active": 5
+  }
+
+  const activityLevelInt = activityLevels[activityLevel.toLowerCase()];
 
   // Calculate BMI and BMR
   const BMI = weight / (height * height);
@@ -60,16 +187,64 @@ personalInfoForm.addEventListener('submit', (event) => {
     BMITags = 'Obese';
   }
 
+  // Calculate macronutrient ratio based on BMI tags
+  let carb_ratio, protein_ratio, fat_ratio;
+    if (BMITags.includes('Underweight')) {
+      carb_ratio = 55;
+      protein_ratio = 20;
+      fat_ratio = 25;
+    } else if (BMITags.includes('Normal weight')) {
+      carb_ratio = 50;
+      protein_ratio = 25;
+      fat_ratio = 25;
+    } else if (BMITags.includes('Overweight')) {
+      carb_ratio = 45;
+      protein_ratio = 30;
+      fat_ratio = 25;
+    } else { // Obese
+      carb_ratio = 40;
+      protein_ratio = 30;
+      fat_ratio = 30;
+    }
+  // Calculate daily calorie intake needed to maintain weight
+  let calories_to_maintain_weight;
+  if (gender === 'male') {
+      calories_to_maintain_weight = Math.round((BMR * activityLevelInt) + (6.25 * height * 100) - (5 * age) + 5);
+    } else {
+      calories_to_maintain_weight = Math.round((BMR * activityLevelInt) + (6.25 * height * 100) - (5 * age) - 161);
+    }
+
+  // Calculate the required daily intake of carbohydrates, protein, and fat based on the calorie intake
+  let required_carbs = Math.round((carb_ratio / 100) * calories_to_maintain_weight / 4); // 4 calories per gram of carbohydrates
+  let required_protein = Math.round((protein_ratio / 100) * calories_to_maintain_weight / 4); // 4 calories per gram of protein
+  let required_fat = Math.round((fat_ratio / 100) * calories_to_maintain_weight / 9); // 9 calories per gram of fat
+
   // Display results
   personalInfoResults.innerHTML = `
-    <p>Age: ${age}</p>
-    <p>Weight: ${weight} kg</p>
-    <p>Height: ${height} m</p>
-    <p>Gender: ${gender}</p>
+  <h2>Hey, we have calculated few metrics to analyze your health!</h2>
+
+
     <p>Activity Level: ${activityLevel}</p>
     <p>BMI: ${BMI.toFixed(2)}</p>
     <p>BMR: ${BMR.toFixed(2)} kcal/day</p>
     <p>BMI Tags: ${BMITags}</p>
+    <p>Calories to maintain weight: ${calories_to_maintain_weight}</p>
+    <p>Required daily intake of carbohydrates: ${required_carbs} grams</p>
+    <p>Required daily intake of protein: ${required_protein} grams</p>
+    <p>Required daily intake of fat: ${required_fat} grams</p>
+
+    <h4>Based on your personal information, we can create a customized meal plan to help you achieve your health goals.</h4>
+
   `;
+
+  personalInfoResults.style.display = 'block';
+  planMyDietDiv.style.display = 'block';
 });
+
+const planMyDietButton = document.querySelector('#plan-my-diet-button');
+
+planMyDietButton.addEventListener('click', () => {
+  // TODO: implement diet planning algorithm
+});
+
   </script>
