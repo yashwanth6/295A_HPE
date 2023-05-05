@@ -218,7 +218,7 @@ personalInfoForm.addEventListener('submit', (event) => {
   let required_carbs = Math.round((carb_ratio / 100) * calories_to_maintain_weight / 4); // 4 calories per gram of carbohydrates
   let required_protein = Math.round((protein_ratio / 100) * calories_to_maintain_weight / 4); // 4 calories per gram of protein
   let required_fat = Math.round((fat_ratio / 100) * calories_to_maintain_weight / 9); // 9 calories per gram of fat
-
+  
   // Display results
   personalInfoResults.innerHTML = `
   <h2>Hey, we have calculated few metrics to analyze your health!</h2>
