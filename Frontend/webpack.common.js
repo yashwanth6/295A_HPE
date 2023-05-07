@@ -44,6 +44,10 @@ module.exports = {
       template: './src/yash.html',
       filename: 'yash.html'
     }),
+    new HtmlWebpackPlugin({
+      template: './src/calorie.html',
+      filename: 'calorie.html'
+    }),
   ],
   devServer: {
     watchFiles: ["./src/*.html"],
