@@ -31,6 +31,7 @@ module.exports.createModel = createModel;
 
 
 const mongoose = require('mongoose');
+const personalInfoSchema = require('../models/PersonalInfoSchema');
 
 const workoutSchema = new mongoose.Schema({
   nameWorkout: {
@@ -80,7 +81,9 @@ const UserSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now
-  }
+  },
+  personalInfo: [personalInfoSchema]
+
 });
 
 module.exports = mongoose.model('user', UserSchema);
