@@ -45,8 +45,24 @@ module.exports = {
       filename: 'yash.html'
     }),
     new HtmlWebpackPlugin({
-      template: './src/calorie.html',
-      filename: 'calorie.html'
+      template: './src/bmi.html',
+      filename: 'bmi.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/about.html',
+      filename: 'about.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/team.html',
+      filename: 'team.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/blog.html',
+      filename: 'blog.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/bmi.html',
+      filename: 'bmi.html'
     }),
   ],
   devServer: {
