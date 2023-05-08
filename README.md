@@ -15,7 +15,7 @@ The AI Workout Assistant program processes picture data from movies or webcams u
 - Prerequisites: you'll need to have [Git](https://git-scm.com/), [Node](https://nodejs.org/), and [NPM](https://www.npmjs.com/package/npm) installed and running on your machine.
 - Open terminal/powershell/command prompt then clone this repository  
     ```Bash
-    git clone [https://github.com/reevald/ai-workout-assistant.git](https://github.com/yashwanth6/295A_HPE/tree/main)
+    git clone https://github.com/yashwanth6/295A_HPE.git
     cd 295A_HPE
     ```
 - For the Backend:
@@ -29,7 +29,7 @@ The AI Workout Assistant program processes picture data from movies or webcams u
     npm install
     ```
     - If there is an ERROR
-        ``` Bash
+    ``` Bash
         npm ERR! code ERESOLVE
         npm ERR! ERESOLVE could not resolve
         npm ERR!
@@ -38,7 +38,7 @@ The AI Workout Assistant program processes picture data from movies or webcams u
         npm ERR! node_modules/@mediapipe/pose
         npm ERR!   @mediapipe/pose@"^0.5.1635988162" from the root project
     ```
-     - Apply Command: 
+    - Apply Command:
         ``` Bash
         npm config set legacy-peer-deps true
         ```
