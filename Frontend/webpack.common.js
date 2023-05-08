@@ -64,6 +64,14 @@ module.exports = {
       template: './src/bmi.html',
       filename: 'bmi.html'
     }),
+    new HtmlWebpackPlugin({
+      template: './src/aboutus.html',
+      filename: 'aboutus.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/contactus.html',
+      filename: 'contactus.html'
+    }),
   ],
   devServer: {
     watchFiles: ["./src/*.html"],
