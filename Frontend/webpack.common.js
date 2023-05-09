@@ -53,10 +53,6 @@ module.exports = {
       filename: 'about.html'
     }),
     new HtmlWebpackPlugin({
-      template: './src/team.html',
-      filename: 'team.html'
-    }),
-    new HtmlWebpackPlugin({
       template: './src/blog.html',
       filename: 'blog.html'
     }),
