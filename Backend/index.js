@@ -35,7 +35,7 @@ app.get('/test_api',async function(req,res){
 //Defining Routes
 app.use('/api', require('./routes/UserRoute'));
 app.use('/exercise', require('./routes/ExerciseRoute'));
-
+app.use('/email', require('./routes/EmailRoute'));
 
 const PORT = process.env.PORT || 5000;
 
