@@ -17,14 +17,14 @@
       "7": {
         "spouseIdx": [9, 5],
         "rangeAngle": [
-          { "min": 0, "max": 90 },
+          { "min": 0, "max": 100 },
           { "min": 150, "max": 180 }
         ]
       },
       "8": {
         "spouseIdx": [10, 6],
         "rangeAngle": [
-          { "min": 0, "max": 90 },
+          { "min": 0, "max": 100 },
           { "min": 150, "max": 180 }
         ]
       },
