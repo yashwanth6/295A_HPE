@@ -29,7 +29,7 @@ The AI Workout Assistant program processes picture data from movies or webcams u
     npm install
     ```
     - If there is an ERROR
-    ``` Bash
+        ``` Bash
         npm ERR! code ERESOLVE
         npm ERR! ERESOLVE could not resolve
         npm ERR!
@@ -37,37 +37,39 @@ The AI Workout Assistant program processes picture data from movies or webcams u
         npm ERR! Found: @mediapipe/pose@0.5.1635988162
         npm ERR! node_modules/@mediapipe/pose
         npm ERR!   @mediapipe/pose@"^0.5.1635988162" from the root project
-    ```
+        ```
     - Apply Command:
         ``` Bash
         npm config set legacy-peer-deps true
         ```
-    - Once the installation is done, you can run the app locally (In the Frontend)
-        ```Bash
-        npm run start-dev
-        ```
+- In the Frontend add this comand to run this app locally.
+    ```Bash
+    npm run start-dev
+    ```
 - Then open http://localhost:8080 to see your app.
 
 ## Limitations
-- Cannot cover 3D angle yet
-    - Planning: research lightweight model that can generate 3D keypoints like BlazePose, MoVNect, LHPE-nets or [other model](https://paperswithcode.com/task/3d-human-pose-estimation).
-- Currently the high resolution makes fps slower
-    - You can try upload videos with high and low resolution then compare them and watch the fps.
-    - Solution to webcam used: using limit with fixed "real" resolution 640x360. To display variate resolution screen, in this case we are using css manipulation.
-
+- 3D angle is not implemented yet
+    - Planning: To investigate lightweight models capable of generating 3D keypoints, such as BlazePose, MoVNect, LHPE-nets, or other model.
+- Facing low FPS because of the hight quality of videos
+    - You may compare and watch the frames per second by uploading videos with high and low resolutions.
+ 
 ## References
-- Pose Detection with TFJS (https://github.com/tensorflow/tfjs-models/tree/master/pose-detection)
-- MoveNet Documentation (https://github.com/tensorflow/tfjs-models/tree/master/pose-detection/src/movenet)
-- MoveNet in TFHub (https://tfhub.dev/google/tfjs-model/movenet/singlepose/lightning/4)
-- Pose Classification (https://developers.google.com/ml-kit/vision/pose-detection/classifying-poses)
-- Original video (in image above)
-    -   Man push-up (https://www.youtube.com/watch?v=OKn_6Me96Yc)
-    -   Woman squating (1) (https://www.youtube.com/watch?v=LSj280OEKUI)
-    -   Woman squating (2) (https://www.youtube.com/watch?v=QifjltKUMCk)
+- [Pose Detection with TFJS](https://github.com/tensorflow/tfjs-models/tree/master/pose-detection)
+- [MoveNet Documentation](https://github.com/tensorflow/tfjs-models/tree/master/pose-detection/src/movenet)
+- [MoveNet in TFHub](https://tfhub.dev/google/tfjs-model/movenet/singlepose/lightning/4)
+- [Pose Classification](https://developers.google.com/ml-kit/vision/pose-detection/classifying-poses)
+- [Other Models for 3D angle](https://paperswithcode.com/task/3d-human-pose-estimation)
+- Original video used in training and testing
+    -   [push-up](https://www.youtube.com/watch?v=OKn_6Me96Yc)
+    -   [squating](https://www.youtube.com/watch?v=LSj280OEKUI)
+    -   [Lunges](https://www.istockphoto.com/video/asian-woman-healthy-she-exercises-outdoors-she-does-leg-lunge-poses-gm1302538706-394248383)
+    -   [Jumping-Jacks](https://www.istockphoto.com/video/woman-doing-exercises-in-the-beach-a-dark-haired-woman-coach-in-a-sporty-short-top-gm1157341184-315766126)
+    -   [Dumbbell-High-Curls](https://www.jefit.com/exercises/706/Dumbbell-High-Curl)
 
 ## TODOs
-- Write documentations
 - Write unit test
-- [Done] Add audio effect (timer and movement direction)
-- Data Augmentation (flip horizontal, scale, shear and shift) to try improve metric pose classification model (accuration)
-- Convert to components (prefer using framework like react js)
+- Add audio effects when the exercise is not correct
+- Create better dataset to train our model along with data augmentation techniques
+- Generate the user activity tracking graphs for their own profile
+- Calculate the calories and suggest diet plan
