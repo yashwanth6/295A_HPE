@@ -13,14 +13,14 @@ The AI Workout Assistant program processes picture data from movies or webcams u
 
 ## Training of the Models
 To determine whether or not to exercise, the model uses binary categorization. For instance, whether to perform a push-up or not. You can choose any push-up video with a full body for a positive class. Additionally, you can choose any solo human dancing video for the negative class. Upload those videos using the advanced settings under the assistance section. For each of the data points, you will receive a CSV file. then open this ![colab](https://github.com/PLEX-GR00T/Pose_Estimation/blob/main/Workout_Pose_2D_17Keypoints_Squats.ipynb) and adhere to the instructions after gathering both good and negative data. The model will be sent to you in tfjs format. 
-# 1) Squats
+### 1) Squats
 
 <p float="left">
   <img src="./Frontend/public/img/squat_Accuracy.png" width="400" height="300" />
   <img src="./Frontend/public/img/squat_loss.png" width="400" height="300" /> 
 </p>
 
-# 1) Dumbbell High Curls
+### 1) Dumbbell High Curls
 
 <p float="left">
   <img src="Frontend/public/img/dumbbell_curls_accuracy.png" width="400" height="300" />
