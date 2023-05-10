@@ -2,14 +2,14 @@
 # Human Pose Estimation (HPE)
 Introducing our web application, which enables anytime, anywhere access to workouts. You may exercise with confidence while the app automatically counts and monitors your repetitions thanks to our pose detecting feature. It's never been simpler to adopt a healthy lifestyle and fit daily exercise into your schedule. Start your fitness adventure right away and enjoy the benefits and ease of working out with our nifty web application. Let's put our health first and live healthier lives by working out frequently.
 
-![HPE Platform Thumbnail](./public/img/social-media-thumbnail.png)
+![HPE Platform Thumbnail](./public/img/workout_ss1.png)
 
 Pose Detector and Classification is a feature that the AI Workout Assistant program implements, and it runs fully on the client side. This indicates that the user's gadget does not transmit any image data. After the analysis is finished, the application automatically deletes any movies or photographs that it processed. By limiting the possibility of illegal access or data breaches and keeping all critical information within the user's device, this strategy guarantees user privacy and data protection.
 
 ## How it Work
 The AI Workout Assistant program processes picture data from movies or webcams using a pose detector powered by the MoveNet model. Keypoints are produced by the position detector and are used as input to categorize various workout types and are crucial for figuring out training repetitions. The classification task is subsequently carried out by a Dense Neural Network (DNN) model, which receives the keypoints. It's crucial to remember that all picture data processing, including posture detection and classification, takes place locally on the user's device, protecting the confidentiality and privacy of their data.
 
-![How AI Workout Work](./public/img/how-it-work-ai-workout.png)
+![How AI Workout Work](./public/img/processing_pipeline.png)
 
 ## How to Run Locally
 - Prerequisites: you'll need to have [Git](https://git-scm.com/), [Node](https://nodejs.org/), and [NPM](https://www.npmjs.com/package/npm) installed and running on your machine.
