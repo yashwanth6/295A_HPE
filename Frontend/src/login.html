@@ -197,13 +197,46 @@ a[target='_blank'] {
 					'Content-Type': 'application/json'
 				},
 				body: JSON.stringify({ username, password })
-			});
+			})
+            .then(response => response.json())
+    .then(data => {
+      if (data.token) {
 
-			if (response.status === 200) {
-				window.location.href = 'http://localhost:8080/dashboard.html';
-			} else {
-				errorMessage.style.display = 'block';
-			}
+        
+        const settings = {
+  currWorkout: 'squat',
+  currDuration: '3 Minutes',
+  isAccessCamera: true,
+  isAudioEffect: true,
+  isDeveloperMode: false,
+  isDirectionSign: true,
+  isFlipCamera: false,
+  isFullscreen: false
+};
+
+localStorage.setItem('DBWOSettings', JSON.stringify(settings));
+
+
+        // Token received, store it in localStorage or a secure cookie
+        localStorage.setItem('token', data.token);
+        // Redirect the user to the dashboard or perform any other necessary actions
+        window.location.href = 'http://localhost:8080/dashboard.html';
+      } else {
+        // Handle invalid credentials or other login errors
+        errorMessage.style.display = 'block';
+        console.error('Invalid credentials');
+      }
+    })
+    .catch(error => {
+      console.error('Error logging in:', error);
+      // Handle error if necessary
+    });
+
+			// if (response.status === 200) {
+			// 	window.location.href = 'http://localhost:8080/dashboard.html';
+			// } else {
+			// 	errorMessage.style.display = 'block';
+			// }
 		});
 	</script>
 

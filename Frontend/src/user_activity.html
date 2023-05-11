@@ -361,6 +361,193 @@ body {
 			z-index: 1;
 		}
 	</style>
+    <script>
+
+      (function (factory) {
+          typeof define === 'function' && define.amd ? define(factory) :
+          factory();
+      })((function () { 'use strict';
+      
+          /**
+           * The code was extracted from:
+           * https://github.com/davidchambers/Base64.js
+           */
+      
+          var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+      
+          function InvalidCharacterError(message) {
+              this.message = message;
+          }
+      
+          InvalidCharacterError.prototype = new Error();
+          InvalidCharacterError.prototype.name = "InvalidCharacterError";
+      
+          function polyfill(input) {
+              var str = String(input).replace(/=+$/, "");
+              if (str.length % 4 == 1) {
+                  throw new InvalidCharacterError(
+                      "'atob' failed: The string to be decoded is not correctly encoded."
+                  );
+              }
+              for (
+                  // initialize result and counters
+                  var bc = 0, bs, buffer, idx = 0, output = "";
+                  // get next character
+                  (buffer = str.charAt(idx++));
+                  // character found in table? initialize bit storage and add its ascii value;
+                  ~buffer &&
+                  ((bs = bc % 4 ? bs * 64 + buffer : buffer),
+                      // and if not first of each 4 characters,
+                      // convert the first 8 bits to one ascii character
+                      bc++ % 4) ?
+                  (output += String.fromCharCode(255 & (bs >> ((-2 * bc) & 6)))) :
+                  0
+              ) {
+                  // try to find character in table (0-63, not found => -1)
+                  buffer = chars.indexOf(buffer);
+              }
+              return output;
+          }
+      
+          var atob = (typeof window !== "undefined" &&
+              window.atob &&
+              window.atob.bind(window)) ||
+          polyfill;
+      
+          function b64DecodeUnicode(str) {
+              return decodeURIComponent(
+                  atob(str).replace(/(.)/g, function(m, p) {
+                      var code = p.charCodeAt(0).toString(16).toUpperCase();
+                      if (code.length < 2) {
+                          code = "0" + code;
+                      }
+                      return "%" + code;
+                  })
+              );
+          }
+      
+          function base64_url_decode(str) {
+              var output = str.replace(/-/g, "+").replace(/_/g, "/");
+              switch (output.length % 4) {
+                  case 0:
+                      break;
+                  case 2:
+                      output += "==";
+                      break;
+                  case 3:
+                      output += "=";
+                      break;
+                  default:
+                      throw new Error("base64 string is not of the correct length");
+              }
+      
+              try {
+                  return b64DecodeUnicode(output);
+              } catch (err) {
+                  return atob(output);
+              }
+          }
+      
+          function InvalidTokenError(message) {
+              this.message = message;
+          }
+      
+          InvalidTokenError.prototype = new Error();
+          InvalidTokenError.prototype.name = "InvalidTokenError";
+      
+          function jwtDecode(token, options) {
+              if (typeof token !== "string") {
+                  throw new InvalidTokenError("Invalid token specified: must be a string");
+              }
+      
+              options = options || {};
+              var pos = options.header === true ? 0 : 1;
+      
+              var part = token.split(".")[pos];
+              if (typeof part !== "string") {
+                  throw new InvalidTokenError("Invalid token specified: missing part #" + (pos + 1));
+              }
+      
+              try {
+                  var decoded = base64_url_decode(part);
+              } catch (e) {
+                  throw new InvalidTokenError("Invalid token specified: invalid base64 for part #" + (pos + 1) + ' (' + e.message + ')');
+              }
+      
+              try {
+                  return JSON.parse(decoded);
+              } catch (e) {
+                  throw new InvalidTokenError("Invalid token specified: invalid json for part #" + (pos + 1) + ' (' + e.message + ')');
+              }
+          }
+      
+          /*
+           * Expose the function on the window object
+           */
+      
+          //use amd or just through the window object.
+          if (window) {
+              if (typeof window.define == "function" && window.define.amd) {
+                  window.define("jwt_decode", function() {
+                      return jwtDecode;
+                  });
+              } else if (window) {
+                  window.jwt_decode = jwtDecode;
+              }
+          }
+      
+      }));
+      //# sourceMappingURL=jwt-decode.js.map
+        </script>
+        <script>
+          // Retrieve the token from local storage
+          const token = localStorage.getItem('token');
+          // Check if the user is authenticated
+          fetch('http://localhost:5000/api/auth', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': token
+        }
+      })
+            .then(response => {
+              console.log(response);
+              if (response.ok) {
+                // User is authenticated, proceed with the dashboard content
+                console.log('User is authenticated');
+                
+                
+                
+                // Verify the token
+                try {
+                  const decodedToken = jwt_decode(token);
+                  // The decodedToken variable now contains the decoded token payload
+      
+                  // Perform any necessary checks or validations on the decoded token
+                  // For example, you can check the expiration date, user ID, or any other relevant information
+      
+                  // If the token is valid and meets your criteria, allow access to the dashboard
+                  // Otherwise, redirect the user to the login page or display an error message
+                  console.log('Token verification successful:', decodedToken);
+                } catch (error) {
+                  // Error occurred while decoding or verifying the token
+                  // Redirect the user to the login page or display an error message
+                  console.error('Token verification failed:', error);
+                  window.location.href = 'http://localhost:8080/login.html';
+                }
+                
+                // Here you can add your specific dashboard content and functionality
+              } else {
+                // User is not authenticated, redirect to the login page or handle accordingly
+                console.log('User is not authenticated');
+                window.location.href = 'http://localhost:8080/login.html';
+              }
+            })
+            .catch(error => {
+              console.error('Error checking authentication:', error);
+              // Handle error if necessary
+            });
+        </script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 	<!-- Bootstrap CSS -->
