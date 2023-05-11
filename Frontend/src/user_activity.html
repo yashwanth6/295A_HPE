@@ -104,7 +104,20 @@ body {
 /* 1st change ends here */
       .navbar {
         padding: 0;
+        width: 100%
       }
+
+      .logout-button {
+  background-color: red;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+}
       
       .navbar ul {
         margin: 0;
@@ -572,6 +585,7 @@ body {
           <li><a href="user_activity.html"> Activities</a></li>
           <li><a href="bmi.html">Diet Plan Generator</a></li>
           <li><a href="user_activity_graph.html"> Activity Graphs</a></li>
+          <button id="logoutButton" class="logout-button">Logout</button>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
@@ -694,6 +708,18 @@ function closePopup() {
 }
 
 </script>
+
+<script>
+  // Logout button click event
+document.getElementById('logoutButton').addEventListener('click', (e) => {
+  e.preventDefault();
+  // Remove the token from localStorage
+  localStorage.removeItem('token');
+
+  // Redirect to the login page or perform any other necessary actions
+  window.location.href = '/login.html';
+});
+  </script>
 
 </body>
 </html>
