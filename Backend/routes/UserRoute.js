@@ -10,19 +10,53 @@ const auth = require("../middleware/auth");
 
 
 
+
+
+
 // @route    GET api/auth
 // @desc     Get user by token
 // @access   Private
 router.get('/auth', auth, async (req, res) => {
   try {
+    console.log("user is:");
     console.log(req.user);
     const user = await User.findById(req.user.id).select('-password');
+    console.log("user is:");
     res.json(user);
   } catch (err) {
     console.error(err.message);
+    console.log(error)
     res.status(500).send('Server Error');
   }
 });
+
+router.get('/logout', (req, res) => {
+  // Clear the session and destroy the session cookie
+  req.session.destroy((err) => {
+    if (err) {
+      console.error('Error logging out:', err);
+      return res.status(500).send('Server error');
+    }
+
+    // Remove the JWT token from the client-side
+    res.clearCookie('token');
+    res.sendStatus(200);
+  });
+});
+
+
+// Add this route handler to your server.js or index.js file
+router.get('/checkAuth', (req, res) => {
+  // Check the user's authentication status
+  if (req.session && req.session.loggedIn) {
+    res.sendStatus(200); // User is authenticated
+    console.log("auth");
+  } else {
+    res.sendStatus(401); // User is not authenticated
+    console.log("not auth");
+  }
+});
+
 
 
 
@@ -162,8 +196,7 @@ router.post(
         { expiresIn: '5 days' },
         (err, token) => {
           if (err) throw err;
-          res.sendStatus(200);
-          res.json({ token });
+          res.status(200).json({ token });
         }
       );
     } catch (err) {
@@ -182,6 +215,14 @@ router.get("/getallusers", async(req, res) => {
       return res.status(400).json({ message: error });
   }
 
+});
+
+router.get('/dashboard.html', auth, (req, res) => {
+  res.sendFile('dashboard.html', { root: __dirname + '/dist' });
+});
+
+router.get('/activity.html', auth, (req, res) => {
+  res.sendFile('activity.html', { root: __dirname + '/dist' });
 });
  
 
