@@ -206,7 +206,7 @@
             // Retrieve the token from local storage
             const token = localStorage.getItem('token');
             // Check if the user is authenticated
-            fetch('http://18.191.116.75:5000/api/auth', {
+            fetch('http://172.31.42.135:5000/api/auth', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -236,14 +236,14 @@
                     // Error occurred while decoding or verifying the token
                     // Redirect the user to the login page or display an error message
                     console.error('Token verification failed:', error);
-                    window.location.href = 'http://18.191.116.75:8080/login.html';
+                    window.location.href = 'http://172.31.42.135:8080/login.html';
                   }
                   
                   // Here you can add your specific dashboard content and functionality
                 } else {
                   // User is not authenticated, redirect to the login page or handle accordingly
                   console.log('User is not authenticated');
-                  window.location.href = 'http://18.191.116.75:8080/login.html';
+                  window.location.href = 'http://172.31.42.135:8080/login.html';
                 }
               })
               .catch(error => {
