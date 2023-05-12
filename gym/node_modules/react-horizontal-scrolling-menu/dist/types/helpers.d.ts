@@ -1,0 +1,11 @@
+import React from 'react';
+import type { Refs, Item, ItemOrElement, visibleItems as visibleItemsType, scrollToItemOptions, CustomScrollBehavior } from './types';
+import { observerOptions } from './settings';
+export declare const getNodesFromRefs: (refs: Refs) => HTMLElement[];
+export declare function observerEntriesToItems(entries: IntersectionObserverEntry[], options: typeof observerOptions): Item[];
+declare function scrollToItem<T>(item: ItemOrElement, behavior?: ScrollBehavior | CustomScrollBehavior<T>, inline?: ScrollLogicalPosition, block?: ScrollLogicalPosition, rest?: scrollToItemOptions): T | Promise<T> | void;
+export { scrollToItem };
+export declare const getItemElementById: (id: string | number) => Element | null;
+export declare const getItemElementByIndex: (id: string | number) => Element | null;
+export declare function getElementOrConstructor(Elem: React.FC | React.ReactNode): JSX.Element | null;
+export declare const filterSeparators: (items: visibleItemsType) => visibleItemsType;
