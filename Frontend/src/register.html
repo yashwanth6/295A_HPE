@@ -305,7 +305,7 @@ form.addEventListener('submit', async (event) => {
   
   if(!hasErrors){
 
-  const response = await fetch('http://18.191.116.75:5000/api/register', {
+  const response = await fetch('http://172.31.42.135:5000/api/register', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -314,7 +314,7 @@ form.addEventListener('submit', async (event) => {
   });
 
   if (response.status === 200) {
-    window.location.href = 'http://18.191.116.75:8080/login.html';
+    window.location.href = 'http://172.31.42.135:8080/login.html';
   } 
   else if(response.status === 400){
     errorMessage2.style.display = 'block';

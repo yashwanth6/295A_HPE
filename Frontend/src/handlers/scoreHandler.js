@@ -57,7 +57,7 @@ export default class ScoreHandler {
     emailId = localStorage.getItem("uid");
     const data = { emailId, newScore };
 
-    fetch('http://18.191.116.75:5000/exercise/scores', {
+    fetch('http://172.31.42.135:5000/exercise/scores', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

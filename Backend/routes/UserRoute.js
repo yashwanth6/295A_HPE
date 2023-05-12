@@ -239,7 +239,7 @@ router.post('/login', (req, res) => {
     res.sendStatus(401);
   }
 
-  // res.redirect('http://18.191.116.75:8080/temp.html');
+  // res.redirect('http://172.31.42.135:8080/temp.html');
 });
 
 
