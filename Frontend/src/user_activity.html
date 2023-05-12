@@ -635,6 +635,8 @@ body {
 	})
 	.then(response => response.json())
 	.then(data => {
+    // Sort the data by date in descending order
+  data.sort((a, b) => new Date(b.date) - new Date(a.date));
 		// Add the workout data to the table
 		let tableBody = document.getElementById("exercise-table");
 
