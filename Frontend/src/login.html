@@ -191,7 +191,7 @@ a[target='_blank'] {
             
             localStorage.setItem("uid", username);
 
-			const response = await fetch('http://localhost:5000/api/login2', {
+			const response = await fetch('http://18.191.116.75:5000/api/login2', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -202,7 +202,7 @@ a[target='_blank'] {
     .then(data => {
       if (data.token) {
 
-        
+
         const settings = {
   currWorkout: 'squat',
   currDuration: '3 Minutes',
@@ -220,7 +220,7 @@ localStorage.setItem('DBWOSettings', JSON.stringify(settings));
         // Token received, store it in localStorage or a secure cookie
         localStorage.setItem('token', data.token);
         // Redirect the user to the dashboard or perform any other necessary actions
-        window.location.href = 'http://localhost:8080/dashboard.html';
+        window.location.href = 'http://18.191.116.75:8080/dashboard.html';
       } else {
         // Handle invalid credentials or other login errors
         errorMessage.style.display = 'block';
@@ -233,7 +233,7 @@ localStorage.setItem('DBWOSettings', JSON.stringify(settings));
     });
 
 			// if (response.status === 200) {
-			// 	window.location.href = 'http://localhost:8080/dashboard.html';
+			// 	window.location.href = 'http://18.191.116.75:8080/dashboard.html';
 			// } else {
 			// 	errorMessage.style.display = 'block';
 			// }
