@@ -27,6 +27,12 @@ To determine whether or not to exercise, the model uses binary categorization. F
   <img src="Frontend/public/img/dumbbell_curls_loss.png" width="400" height="300" /> 
 </p>
 
+## Recommending Excercises
+
+This module offers exercises tailored to the users' preferences. It provides accurate exercise postures and various types of exercises. Users can choose which body part they want to focus on, such as the neck, back, arms, chest, and more.
+
+Once users select a specific exercise, they can access a detailed explanation of how to perform it correctly. Additionally, they will receive recommendations for YouTube videos, exercises targeting similar muscles, and exercises using similar equipment. These resources aim to provide users with more information, a wider range of exercises, and continuous motivation throughout their journey towards a healthier lifestyle.
+
 ## How to Run Locally
 - Prerequisites: you'll need to have [Git](https://git-scm.com/), [Node](https://nodejs.org/), and [NPM](https://www.npmjs.com/package/npm) installed and running on your machine.
 - Open terminal/powershell/command prompt then clone this repository  
