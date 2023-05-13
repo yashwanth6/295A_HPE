@@ -1,7 +1,7 @@
 // config.js
 const config = {
-    backendServer: 'http://localhost:5000',
-    frontendServer: 'http://localhost:8080'
+    backendServer: 'http://18.191.116.75:5000',
+    frontendServer: 'http://18.191.116.75:8080'
   };
   
 export default config;

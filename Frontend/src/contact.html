@@ -489,6 +489,8 @@ body{
         display: block;
       }
 
+      
+
   </style>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -529,26 +531,27 @@ body{
     <div class="content">
       <div class="left-side">
         <div class="address details">
-          <i class="fas fa-map-marker-alt"></i>
+          <i class="fas fa-map-marker-alt" style="color: #007bff;"></i>
           <div class="topic">Address</div>
           <div class="text-one">SJSU</div>
           <div class="text-two">San Jose, CA</div>
         </div>
         <div class="phone details">
-          <i class="fas fa-phone-alt"></i>
+          <i class="fas fa-phone-alt" style="color: #007bff;"></i>
+          <!-- background: #007bff; -->
           <div class="topic">Phone</div>
           <div class="text-one">+1 6695887606</div>
           <div class="text-two">+1 6695887606</div>
         </div>
         <div class="email details">
-          <i class="fas fa-envelope"></i>
+          <i class="fas fa-envelope" style="color: #007bff;"></i>
           <div class="topic">Email</div>
           <div class="text-one">hpesjsu@gmail.com</div>
-          <div class="text-two">hpesjsu@gmail.com</div>
+          <!-- <div class="text-two">hpesjsu@gmail.com</div> -->
         </div>
       </div>
       <div class="right-side">
-        <div class="topic-text">Send us a message</div>
+        <div class="topic-text" style="color: #007bff;">Send us a message</div>
         <p>Suggest us about application and let us know if you have hard time to know about functionalities</p>
       <form id="contact-form">
         <div class="input-box">
@@ -562,7 +565,7 @@ body{
            <textarea id="message" name="message" placeholder="Enter Message" required></textarea>
         </div>
         <div class="button">
-            <button type="submit">Send Message</button>
+            <button type="submit" class="btn btn-primary">Send Message</button>
         </div>
       </form>
     </div>
@@ -579,7 +582,7 @@ body{
         const email = form.elements['email'].value;
         const message = form.elements['message'].value;
 
-        fetch('http://localhost:5000/email/send-email', {
+        fetch('http://18.191.116.75:5000/email/send-email', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -536,7 +536,7 @@ a[target='_blank'] {
             
             localStorage.setItem("uid", username);
 
-			const response = await fetch('http://localhost:5000/api/login2', {
+			const response = await fetch('http://18.191.116.75:5000/api/login2', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -545,7 +545,7 @@ a[target='_blank'] {
 			});
 
 			if (response.status === 200) {
-				window.location.href = 'http://localhost:8080/dashboard.html';
+				window.location.href = 'http://18.191.116.75:8080/dashboard.html';
 			} else {
 				errorMessage.style.display = 'block';
 			}
