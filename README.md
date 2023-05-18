@@ -62,7 +62,7 @@ To determine whether or not to exercise, the model uses binary categorization. F
     ```Bash
     npm run start-dev
     ```
-- Then open http://18.191.116.75:8080 to see your app.
+- Then open http://18.191.166.16:8080 to see your app.
 
 ## Limitations
 - 3D angle is not implemented yet
