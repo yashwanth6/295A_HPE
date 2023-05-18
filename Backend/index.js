@@ -6,7 +6,7 @@ var cors = require('cors');
 const conn = require('./config/db');
 
 app.use(cors());
-//app.use(cors({origin:"http://18.191.116.75:8080", credentials:true}));
+//app.use(cors({origin:"http://18.191.166.16:8080", credentials:true}));
 
 app.get('/',(req,res) => res.send('API Running'));
 
