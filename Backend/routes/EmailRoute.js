@@ -13,7 +13,7 @@ router.post('/send-email', (req, res) => {
     service: 'gmail',
     auth: {
       user: 'hpesjsu@gmail.com',
-      pass: 'zslqkzxsytfawrfv'
+      pass: ''
     }
   });
 
